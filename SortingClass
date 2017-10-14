@@ -1,0 +1,26 @@
+template<class T>
+class Sorting
+{
+public:
+	void insertionsort(T* data, int size);
+	void selectionsort(T* data, int size);
+	void quicksort(T* data, int low, int high);
+};
+template<class T>
+void Sorting<T>::insertionsort(T * data, int size)
+{
+	int i, j;
+	T temp;
+	//Outer loop starts at 1 since the 0 index is the sorted half of the array
+	for (i = 1; i < size; i++)
+	{
+		temp = *(data + i);
+		//Loop for inserting element and bubbling next elements
+		for (j = i - 1; temp < *(data + j) && j >= 0; j--)
+		{
+			//Swaps elements array locations
+			*(data + (j + 1)) = *(data + j);
+		}
+		*(data + (j + 1)) = temp;
+	}
+}
